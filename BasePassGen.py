@@ -3,8 +3,6 @@ import string
 import time
 import pyperclip
 
-pip install pyperclip
-
 import streamlit as st
 
 
