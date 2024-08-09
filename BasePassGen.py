@@ -1,9 +1,8 @@
 import random
 import string
 import time
+import tkinter as tk
 import streamlit as st
-
-import clipboard
 
 funny_quotes = [
     "This password is so strong, it does push-ups!",
@@ -29,6 +28,14 @@ def generate_random_password(length=12):
     password = ''.join(random.choice(characters) for _ in range(length))
     return password
 
+def copy_to_clipboard(text):
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    root.clipboard_clear()
+    root.clipboard_append(text)
+    root.update()  # Keeps the clipboard content after the window is closed
+    root.destroy()
+
 st.title("Random Password Generator")
 
 length = st.slider("Select password length", min_value=8, max_value=30, value=12)
@@ -39,7 +46,7 @@ if st.button("Generate Password"):
 
     # Display password in a text input for easy copying
     st.header(password)
-    clipboard.copy(password)
+    copy_to_clipboard(password)
 
     # Temporary pop-up message for success
     success_placeholder = st.empty()
@@ -55,5 +62,5 @@ if st.button("Generate Password"):
     success_placeholder.empty()
 
 # Simple tagline below the page
-st.write("\n" * 50)  # Adding some space before the footer
-st.write("ahmadafif.com", font_size=14)
+st.write("\n" * 40)  # Adding some space before the footer
+st.write("ahmadafif.com", align="center", font_size=17)
