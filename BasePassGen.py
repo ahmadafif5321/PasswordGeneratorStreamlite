@@ -56,4 +56,4 @@ if st.button("Generate Password"):
 
 # Simple tagline below the page
 st.write("\n" * 50)  # Adding some space before the footer
-st.write("ahmadafif.com", align="center", font_size=17)
+st.write("ahmadafif.com", font_size=14)
