@@ -1,18 +1,17 @@
 import random
 import string
 import time
-import pyperclip
 
 import streamlit as st
+import pyperclip
 
 funny_quotes = [
-
     "This password is so strong, it does push-ups!",
     "Even your mom can't guess this one!",
     "MCMC is watching",
     "Guard this password like it's your last slice of pizza!",
-    "Better write this one down—it's practically a masterpiece!"
-    "Your password is more complicated than assembling IKEA furniture."
+    "Better write this one down—it's practically a masterpiece!",
+    "Your password is more complicated than assembling IKEA furniture.",
     "Your password is now as secretive as a magician’s tricks.",
     "This password is so good, even the MCMC would be impressed.",
     "This password is so secure, even Sherlock Holmes couldn’t deduce it.",
@@ -37,11 +36,9 @@ length = st.slider("Select password length", min_value=8, max_value=30, value=12
 if st.button("Generate Password"):
     password = generate_random_password(length)
     st.write(f"Generated password:")
-    #st.write(password)
-
-    #i want to make font bigger using HTML
-    st.write(password)
-
+    
+    # Use HTML to make the password text bigger
+    st.markdown(f"<h2 style='color:blue;'>{password}</h2>", unsafe_allow_html=True)
 
     pyperclip.copy(password)
 
@@ -57,7 +54,7 @@ if st.button("Generate Password"):
     # Clear the success message
     success_placeholder.empty()
 
-#CSS to put my tagline below page
+# CSS to put the tagline below the page
 st.markdown("""
     <style>
     .footer {
