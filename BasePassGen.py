@@ -1,9 +1,9 @@
 import random
 import string
 import time
-
 import streamlit as st
-import pyperclip
+
+import clipboard
 
 funny_quotes = [
     "This password is so strong, it does push-ups!",
@@ -18,7 +18,7 @@ funny_quotes = [
     "This password is more complicated than your love life.",
     "This password is stronger than your morning coffee.",
     "This password is more mysterious than the Bermuda Triangle.",
-    "This password is harder to guess than the plot twist in a thriller.",
+    "This password is harder to guess than the plot twist in a Momento.",
     "This password is harder to figure out than the meaning of life.",
     "This password is more confusing than your partner.",
     "This password is more secure than your emotional walls.",
@@ -35,16 +35,16 @@ length = st.slider("Select password length", min_value=8, max_value=30, value=12
 
 if st.button("Generate Password"):
     password = generate_random_password(length)
-    st.write(f"Generated password:")
-    
-    # Use HTML to make the password text bigger
-    st.markdown(f"<h2 style='color:blue;'>{password}</h2>", unsafe_allow_html=True)
+    st.write("Generated password:")
 
-    pyperclip.copy(password)
+    # Display password in a text input for easy copying
+    st.header(password)
+    clipboard.copy(password)
 
     # Temporary pop-up message for success
     success_placeholder = st.empty()
-    success_placeholder.success("Password copied to clipboard!")
+    success_placeholder.success("Password generated successfully. Copied to clipboard!")
+    st.balloons()
 
     # Wait for a few seconds
     time.sleep(3)
@@ -54,19 +54,6 @@ if st.button("Generate Password"):
     # Clear the success message
     success_placeholder.empty()
 
-# CSS to put the tagline below the page
-st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 17px;
-        color: gray;
-    }
-    </style>
-    <div class="footer">
-        ahmadafif.com
-    </div>
-    """, unsafe_allow_html=True)
+# Simple tagline below the page
+st.write("\n" * 50)  # Adding some space before the footer
+st.write("ahmadafif.com", align="center", font_size=17)
