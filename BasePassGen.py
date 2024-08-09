@@ -1,9 +1,10 @@
 import random
 import string
 import time
+import pyperclip
 
 import streamlit as st
-import pyperclip
+
 
 funny_quotes = [
 
